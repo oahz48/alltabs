@@ -3,7 +3,7 @@
 ## Git workflow
 
 - Keep source code, tests, website sources, and project documentation under Git version control. Commit completed, verified work when the user requests Git control; do not leave the agent instructions outside version control.
-- GitHub publication is deferred at the user's request. Do not create a remote or push until asked.
+- The owner authorized public GitHub publication at `https://github.com/oahz48/alltabs` under the MIT License. Keep pushes scoped to reviewed project files.
 - Never commit credentials, private keys, local caches, browser profiles, or generated release ZIPs. Keep `dist/`, `artifacts/`, and local `.agents/` skills ignored.
 - Read `docs/RELEASE.md` and `website/README.md` before release or website work. Update these records when publishing status changes.
 

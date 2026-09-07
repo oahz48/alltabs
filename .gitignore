@@ -12,3 +12,14 @@ Thumbs.db
 *.key
 *.p12
 *.crx
+
+# Local tooling, credentials, and generated archives
+.codex/
+.venv/
+__pycache__/
+*.log
+*.zip
+*.pfx
+*.p8
+*.jks
+.npmrc

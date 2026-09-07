@@ -33,9 +33,9 @@ The owner reports developer registration complete. Publisher is z0; public suppo
 5. Run the release command on the final source. Upload the ZIP as a new dashboard item. Enter the prepared listing, artwork, permission justifications, remote-code declaration, privacy URL, and distribution settings. Complete the dashboard's certifications based on the actual behavior.
 6. Submit for review. Resolve any reviewer feedback and upload a higher version for updates. Confirm the public store install works after approval; record the listing URL and tag the exact tested commit.
 
-## GitHub later
+## GitHub publication
 
-No remote is configured and no push was made. Choose the GitHub owner, repository name, visibility, and software license. Do not assume that publishing source grants reuse rights. Add the chosen license and support/security reporting contact before a public launch. Review the staged diff and history for secrets and personal material, commit the reviewed source, create the repository, push, require the Quality workflow on pull requests, and enable private vulnerability reporting. Publish a GitHub release from the exact tested commit with the verified ZIP. Keep store and GitHub versions aligned.
+The owner authorized public source publication at https://github.com/oahz48/alltabs under the MIT License. See [OPEN-SOURCE.md](OPEN-SOURCE.md) for repository scope and validation. GitHub release tags and package attachments remain separate from this source push.
 
 ## Scope and limits
 
@@ -44,3 +44,7 @@ No external dependency was added. The checks include syntax and behavior; they a
 ## Submission — 2026-09-07
 
 User confirmed successful Windows and macOS testing (macOS Chrome 152.0.7977.82 ARM64). Submitted version 0.1.0 to Chrome Web Store; dashboard confirmed Pending review. Free, public, all regions. Automatic publication is OFF: publish manually after approval, within Google's 30-day staging window. Reviewer instructions saved and verified. Homepage now shows Coming soon with awaiting-review text and no active store link. Restore the install link after publication: https://chromewebstore.google.com/detail/alltabs/ikneolohkckpkfmkbplmcneeaaelneoa .
+
+## Website feature update — September 7, 2026
+
+Published the six-feature homepage section and compact System requirements footnote to the existing Cloudflare Worker. Live homepage, privacy page, and both image assets verified against local files. Extension package and store publication status unchanged.

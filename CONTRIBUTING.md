@@ -10,4 +10,6 @@ Run `node scripts/release.mjs` before proposing a release. It stops on the first
 
 For behavior changes, add a regression test that fails before the fix. Include the problem, resulting behavior, and validation in a pull request. Keep generated test artifacts, browser profiles, credentials, and ZIPs out of Git. Review new packaged files explicitly in scripts/validate.mjs.
 
-The license has not yet been selected by the owner. Public source hosting alone does not grant reuse rights. Resolve licensing before inviting external contributions.
+Report suspected vulnerabilities privately using [SECURITY.md](SECURITY.md). Use public issues only for non-sensitive bug reports and feature requests, with sample data instead of browsing history.
+
+Alltabs is licensed under the [MIT License](LICENSE). Contributions are provided under the same license.

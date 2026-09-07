@@ -77,6 +77,12 @@ Real account sync across Windows, macOS, Android, and iPhone remains a personal-
 
 ## Release readiness
 
-See [release readiness](docs/RELEASE.md) for completed work and remaining publication steps, [store listing](docs/STORE-LISTING.md) for submission copy, and [contributing](CONTRIBUTING.md) for code standards. Run `node scripts/release.mjs` for the full quality and packaging gate. This version is a release candidate and has not been submitted to the store.
+See [release readiness](docs/RELEASE.md) for completed work and remaining publication steps, [store listing](docs/STORE-LISTING.md) for submission copy, and [contributing](CONTRIBUTING.md) for code standards. Run `node scripts/release.mjs` for the full quality and packaging gate. Version 0.1.0 was submitted to the Chrome Web Store and was observed pending review on September 7, 2026. Store publication has not been confirmed; use the local installation instructions above.
+
+## Support, security, and licensing
+
+Visit the [Alltabs website](https://alltabs.oahz48.com/) or email oahz48@gmail.com for support. Please use sample tabs when reporting problems and remove personal URLs from screenshots and logs. Report vulnerabilities privately using [SECURITY.md](SECURITY.md).
+
+Alltabs is licensed under the [MIT License](LICENSE). Source: [oahz48/alltabs](https://github.com/oahz48/alltabs).
 
 References: [Sessions API](https://developer.chrome.com/docs/extensions/reference/api/sessions), [Side Panel API](https://developer.chrome.com/docs/extensions/reference/api/sidePanel), [OneTab help](https://www.one-tab.com/help).
