@@ -18,3 +18,7 @@ Deployed the prominent six-feature section, Features navigation link, and compac
 ## Open-source website refinement — September 7, 2026
 
 Deployed lighter surfaces, refined typography and spacing, a framed sample panel preview, and GitHub links in the navigation, hero, and footer. Checked desktop and 390px layouts; verified live homepage, privacy page, and both images match the local build. The existing Worker and domain remain in use.
+
+## Neutral theme — September 7, 2026
+
+The homepage and privacy page now use white/zinc surfaces and charcoal text, with blue homepage accents. The homepage has a dark Add to Chrome button explicitly disabled and marked Coming soon pending confirmed store publication. GitOwl was inspected as a visual reference: its public assets show Next.js, Tailwind CSS, Inter, and shadcn-style theme tokens. Alltabs follows the palette and button treatment using its existing static CSS; no framework or remote dependency was added.

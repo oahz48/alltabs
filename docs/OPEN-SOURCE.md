@@ -6,7 +6,7 @@ The owner authorized publishing Alltabs at https://github.com/oahz48/alltabs und
 
 Source, tests, development scripts, project documentation (including AGENTS.md), and website sources and sample artwork belong in Git. The generated website Worker remains tracked as the deployment artifact used by the website workflow.
 
-Browser profiles, local agent tooling, caches, dependencies, credentials, logs, and release archives are excluded. Existing history is retained. New commits use repository-local identity `oahz48 <61070477+oahz48@users.noreply.github.com>`. Rewriting attribution on already-published commits remains pending explicit authorization. A common-credential-pattern scan of both prior commits found no matches; this limited scan does not replace a security audit.
+Browser profiles, local agent tooling, caches, dependencies, credentials, logs, and release archives are excluded. At the owner's explicit request, the four original commits were rewritten to use oahz48 attribution, preserving their file trees, messages, and timestamps. A pre-rewrite bundle is kept locally under ignored artifacts/. New commits use repository-local identity `oahz48 <61070477+oahz48@users.noreply.github.com>`. A common-credential-pattern scan of both prior commits found no matches; this limited scan does not replace a security audit.
 
 ## Validation and release
 

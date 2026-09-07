@@ -51,4 +51,4 @@ Published the six-feature homepage section and compact System requirements footn
 
 ## Open-source publication — September 7, 2026
 
-Public source is available at https://github.com/oahz48/alltabs under MIT. GitHub Quality passed after the initial push. The homepage now links to GitHub and has refined styling; live pages and assets were verified against local files. Repository-local Git identity now uses oahz48 for new commits. The four already-published commits retain their original attribution pending authorization to rewrite public history.
+Public source is available at https://github.com/oahz48/alltabs under MIT. GitHub Quality passed after the initial push. The homepage now links to GitHub and has refined styling; live pages and assets were verified against local files. Repository-local Git identity now uses oahz48 for new commits. The owner subsequently authorized rewriting the four original commits to use oahz48 attribution; their historical source trees remain unchanged.
