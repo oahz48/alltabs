@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { startPreview } from '../scripts/preview.mjs';
@@ -13,21 +13,29 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const extensionMode = process.argv.includes('--extension');
 const browser = spawn(process.env.ALLTABS_CHROME || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', [
   '--headless=new', `--user-data-dir=${profile}`,
-  ...(extensionMode ? ['--remote-debugging-pipe','--enable-unsafe-extension-debugging'] : ['--remote-debugging-port=0']),
+  '--remote-debugging-pipe', ...(extensionMode ? ['--enable-unsafe-extension-debugging'] : []),
   '--no-first-run', '--no-default-browser-check', '--disable-background-networking', '--disable-component-update', '--disable-sync', 'about:blank'
-], { windowsHide: true, stdio: extensionMode ? ['ignore','ignore','pipe','pipe','pipe'] : ['ignore','ignore','pipe'] });
+], { windowsHide: true, stdio: ['ignore','ignore','pipe','pipe','pipe'] });
 let stderr=''; browser.stderr.on('data',data=>{stderr+=data;});
-let launchError; browser.on('error',error=>{launchError=error;});
 const delay = ms => new Promise(resolve=>setTimeout(resolve,ms));
-let socket, sequence=0, nativeSession;
+let sequence=0, nativeSession, browserFailure;
 const pending=new Map(), errors=[];
-async function send(method,params={}) {
+function failBrowser(error) {
+  browserFailure=error;
+  for(const job of pending.values()) job.reject(error);
+  pending.clear();
+}
+browser.on('error',failBrowser);
+browser.on('exit',(code,signal)=>failBrowser(new Error(`Chrome exited (code ${code}, signal ${signal}). ${stderr}`)));
+browser.stdio[3].on('error',failBrowser);
+async function send(method,params={},timeoutMs=15000) {
+  if(browserFailure) throw browserFailure;
   const id=++sequence;
   return new Promise((resolve,reject)=>{
-    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`CDP timeout: ${method}`));},15000);
+    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`CDP timeout after ${timeoutMs}ms: ${method}. Chrome stderr: ${stderr || '(empty)'}`));},timeoutMs);
     pending.set(id,{resolve:value=>{clearTimeout(timer);resolve(value);},reject:error=>{clearTimeout(timer);reject(new Error(`${method}: ${error.message}`));}});
-    const message=JSON.stringify({id,method,params,...(extensionMode&&nativeSession&&!/^(Browser|Extensions|Target)\./.test(method)?{sessionId:nativeSession}:{})});
-    if(extensionMode) browser.stdio[3].write(message+'\0'); else socket.send(message);
+    const message=JSON.stringify({id,method,params,...(nativeSession&&!/^(Browser|Extensions|Target)\./.test(method)?{sessionId:nativeSession}:{})});
+    browser.stdio[3].write(message+'\0');
   });
 }
 async function evaluate(expression) {
@@ -51,28 +59,19 @@ try {
     if(message.id) {const job=pending.get(message.id);if(job){pending.delete(message.id);message.error?job.reject(new Error(JSON.stringify(message.error))):job.resolve(message.result);}}
     if(message.method==='Runtime.exceptionThrown') errors.push(message.params.exceptionDetails);
   }
-  if(extensionMode) {
+  // Both suites use the inherited pipe: no debug-port file or localhost socket race.
+  {
     let buffer='';
     browser.stdio[4].on('data',data=>{
       buffer+=data.toString();let end;
       while((end=buffer.indexOf('\0'))>=0){const part=buffer.slice(0,end);buffer=buffer.slice(end+1);if(part)receive(JSON.parse(part));}
     });
-    await send('Browser.getVersion');
+    const version=await send('Browser.getVersion',{},45000);
+    console.log(`Browser: ${version.product}`);
     const targets=(await send('Target.getTargets')).targetInfos;
     const page=targets.find(target=>target.type==='page');
-    nativeSession=(await send('Target.attachToTarget',{targetId:page.targetId,flatten:true})).sessionId;
-  } else {
-  let port;
-  for(let i=0;i<100;i++) {
-    if(launchError) throw launchError;
-    try { port=Number((await readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]);break; } catch {}
-    await delay(100);
-  }
-  if(!port) throw new Error(`Chrome did not start: ${stderr}`);
-  const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
-  socket=new WebSocket(targets.find(target=>target.type==='page').webSocketDebuggerUrl);
-  await new Promise((resolve,reject)=>{socket.addEventListener('open',resolve,{once:true});socket.addEventListener('error',reject,{once:true});});
-  socket.addEventListener('message',event=>receive(JSON.parse(event.data)));
+    const targetId=page?.targetId || (await send('Target.createTarget',{url:'about:blank'})).targetId;
+    nativeSession=(await send('Target.attachToTarget',{targetId,flatten:true})).sessionId;
   }
   await send('Page.enable');await send('Runtime.enable');
   await send('Emulation.setFocusEmulationEnabled',{enabled:true});
@@ -250,7 +249,6 @@ try {
   console.log(`${results.length} browser checks passed. Screenshots: ${artifacts}`);
   }
 } finally {
-  if(extensionMode){try{await send('Browser.close');}catch{}}
-  if(socket?.readyState===WebSocket.OPEN){try{await send('Browser.close');}catch{}socket.close();}
+  if(!browserFailure){try{await send('Browser.close',{},3000);}catch{}}
   browser.kill();server.close();
 }
