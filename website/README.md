@@ -14,3 +14,7 @@ The homepage serves the extension icon and `assets/panel-preview.png` (actual pa
 ## Website update — September 7, 2026
 
 Deployed the prominent six-feature section, Features navigation link, and compact System requirements footnote to the existing alltabs-site Worker. Verified the live HTTPS homepage, privacy page, icon, and panel preview match local files. Store Coming soon status remains unchanged.
+
+## Open-source website refinement — September 7, 2026
+
+Deployed lighter surfaces, refined typography and spacing, a framed sample panel preview, and GitHub links in the navigation, hero, and footer. Checked desktop and 390px layouts; verified live homepage, privacy page, and both images match the local build. The existing Worker and domain remain in use.

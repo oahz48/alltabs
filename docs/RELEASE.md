@@ -48,3 +48,7 @@ User confirmed successful Windows and macOS testing (macOS Chrome 152.0.7977.82 
 ## Website feature update — September 7, 2026
 
 Published the six-feature homepage section and compact System requirements footnote to the existing Cloudflare Worker. Live homepage, privacy page, and both image assets verified against local files. Extension package and store publication status unchanged.
+
+## Open-source publication — September 7, 2026
+
+Public source is available at https://github.com/oahz48/alltabs under MIT. GitHub Quality passed after the initial push. The homepage now links to GitHub and has refined styling; live pages and assets were verified against local files. Repository-local Git identity now uses oahz48 for new commits. The four already-published commits retain their original attribution pending authorization to rewrite public history.

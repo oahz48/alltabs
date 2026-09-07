@@ -2,6 +2,8 @@
 
 ## Git workflow
 
+- Use repository-local Git identity `oahz48 <61070477+oahz48@users.noreply.github.com>` for commits.
+
 - Keep source code, tests, website sources, and project documentation under Git version control. Commit completed, verified work when the user requests Git control; do not leave the agent instructions outside version control.
 - The owner authorized public GitHub publication at `https://github.com/oahz48/alltabs` under the MIT License. Keep pushes scoped to reviewed project files.
 - Never commit credentials, private keys, local caches, browser profiles, or generated release ZIPs. Keep `dist/`, `artifacts/`, and local `.agents/` skills ignored.
