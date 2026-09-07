@@ -1,0 +1,13 @@
+{
+  "name": "alltabs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/model.test.js",
+    "preview": "node scripts/preview.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:extension": "node tests/browser.mjs --extension",
+    "icons": "node scripts/icons.mjs",
+    "package": "node scripts/package.mjs"
+  }
+}

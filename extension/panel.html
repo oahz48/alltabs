@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Alltabs</title>
+  <link rel="icon" href="icons/icon-32.png">
+  <link rel="stylesheet" href="panel.css">
+  <script type="module" src="panel.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topline">
+      <div class="brand"><img src="icons/icon-32.png" alt="" width="28" height="28"><h1>Alltabs</h1></div>
+      <div class="tools">
+        <button id="refresh" class="icon-button" title="Refresh synced tabs" aria-label="Refresh synced tabs" data-icon="refresh"></button>
+        <button id="settings" class="icon-button" title="Settings and hidden devices" aria-label="Settings and hidden devices" data-icon="settings"></button>
+        <button id="close" class="icon-button" title="Close panel" aria-label="Close panel" data-icon="close"></button>
+      </div>
+    </div>
+    <div class="search-box"><span data-icon="search"></span><input id="search" type="search" placeholder="Search your tabs" aria-label="Search tab titles and URLs" autocomplete="off" spellcheck="false"><kbd>/</kbd></div>
+    <div class="summary-line"><span id="summary">Your tabs, across devices</span><span id="activity" aria-live="polite"></span></div>
+  </header>
+  <div id="error" class="error" role="alert" hidden></div>
+  <main id="list" aria-label="Tabs by device" tabindex="-1"><div class="empty"><h2>Gathering your tabs…</h2><p>Reading Chrome’s latest synced snapshot.</p></div></main>
+  <footer id="footer"><span class="status-dot"></span><span id="freshness">Synced by Chrome</span><button id="help" class="text-button">Help</button></footer>
+  <section id="selection-bar" aria-label="Selected tab actions" hidden><div class="selection-top"><strong id="selection-count"></strong><button id="clear-selection" class="text-button">Clear</button></div><div class="selection-actions"><button id="open-selected" class="primary">Open selected</button><button id="copy-selected" class="secondary">Copy links</button></div></section>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <div class="dialog-heading"><h2 id="settings-title">Make yourself at home</h2><button class="icon-button" data-dismiss data-icon="close" aria-label="Close settings"></button></div>
+    <label class="setting"><span>Show this device<small>Tabs from all windows on this computer</small></span><input type="checkbox" id="show-local"></label>
+    <h3>Hidden devices</h3><p class="muted">Hidden only in Alltabs. Bring them back anytime.</p><div id="hidden-devices"></div>
+    <div class="about"><strong>Alltabs <span id="version"></span></strong><p>No account, analytics, or external service. Preferences stay on this computer.</p></div>
+  </dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-heading"><h2 id="help-title">Your tabs, within reach</h2><button class="icon-button" data-dismiss data-icon="close" aria-label="Close help"></button></div>
+    <p>Click a tab to open it here. Your list stays in place. Use Ctrl/Cmd-click or middle-click to open it in the background.</p>
+    <p>Select tabs to open several at once or copy their links. Device menus let you open all tabs or hide a device.</p>
+    <h3>Missing a device?</h3><p>Use the same Chrome profile and enable history and open-tab sync on each device. Open Chrome on that device and give it time to sync, then refresh here.</p>
+    <p>Alltabs reads Chrome’s latest snapshot every 30 seconds while visible. Refresh cannot force another device to sync. Chrome shares up to 25 windows per device.</p>
+    <h3>Using OneTab</h3><p>Open selected tabs here, then use OneTab’s own menu to collect them. Alltabs cannot close remote tabs or send tabs directly into OneTab.</p>
+    <button id="native-history" class="secondary">Open Chrome’s synced tabs</button>
+  </dialog>
+  <dialog id="bulk-dialog" aria-labelledby="bulk-title"><h2 id="bulk-title">Open these tabs?</h2><p id="bulk-description"></p><div class="dialog-actions"><button id="bulk-cancel" class="secondary">Cancel</button><button id="bulk-confirm" class="primary">Open tabs</button></div></dialog>
+</body>
+</html>
