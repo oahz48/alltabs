@@ -22,3 +22,7 @@ Deployed lighter surfaces, refined typography and spacing, a framed sample panel
 ## Neutral theme — September 7, 2026
 
 The homepage and privacy page now use white/zinc surfaces and charcoal text, with blue homepage accents. The homepage has a dark Add to Chrome button explicitly disabled and marked Coming soon pending confirmed store publication. GitOwl was inspected as a visual reference: its public assets show Next.js, Tailwind CSS, Inter, and shadcn-style theme tokens. Alltabs follows the palette and button treatment using its existing static CSS; no framework or remote dependency was added.
+
+## Tinted surfaces and pill actions — September 7, 2026
+
+Deployed soft blue/lavender page and preview surfaces, with rounded gradient-outline action buttons based on GitOwl's closing call to action. GitHub has a hover fill and keyboard focus ring; Add to Chrome remains disabled and labelled Coming soon. Verified desktop and 390px layouts, no horizontal overflow, and matching live homepage, privacy page, and assets.
