@@ -2,7 +2,11 @@
 
 Alltabs displays open tabs that Chrome makes available from your synced devices, plus non-incognito tabs from the current computer. Tab titles and addresses are used only to display, search, select, copy, and open tabs at your request.
 
-Alltabs has no separate account, server, analytics, advertising, or third-party scripts. It does not send your browsing data to the developer or any Alltabs service.
+## Local processing; no upload to Alltabs
+
+Alltabs processes tab titles, URLs, searches, and selections locally on your device. It does not upload this data to the developer, the Alltabs website, or any developer-operated server. There is no Alltabs account, analytics, tracking, advertising, or remote code.
+
+Tabs from other devices are supplied by Chrome's own sync service. Alltabs reads the snapshots Chrome makes available; it does not operate a separate sync service. Website icons use Chrome's built-in favicon service, and opening a link connects your browser to that website. These Chrome services and destination websites have their own privacy behavior.
 
 ## Local storage
 
@@ -26,4 +30,10 @@ Removing Alltabs removes its extension storage. Chrome sync and the operating sy
 
 Alltabs requests no website host permissions and injects no code into web pages. Opening a link navigates Chrome to that destination; those websites and Chrome's own sync and favicon services have their own privacy behavior.
 
-This policy describes the bundled personal-test release, version 0.1.0.
+Alltabs uses browsing data only to provide its visible tab-management features. It does not sell this data, use it for advertising, or use it for credit or lending decisions. Its use of information complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.
+
+Last updated: September 7, 2026. Applies to Alltabs 0.1.0.
+
+## Contact
+
+Publisher: z0. For support or privacy questions, contact oahz48@gmail.com.

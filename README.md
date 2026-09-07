@@ -2,7 +2,9 @@
 
 A clean, persistent Chrome side panel for tabs synced from your other devices.
 
-## Install for personal use
+Alltabs processes tab titles, URLs, searches, and selections locally on your device. It does not upload this data to the developer, the Alltabs website, or any developer-operated server. There is no Alltabs account, analytics, tracking, advertising, or remote code. Chrome supplies synced tabs through its own service; Alltabs does not provide a separate sync backend.
+
+## Install for local testing
 
 Requires **Chrome 141 or newer** on Windows or macOS.
 
@@ -12,13 +14,7 @@ Requires **Chrome 141 or newer** on Windows or macOS.
 4. Open Chrome's puzzle-piece Extensions menu and pin **Alltabs**.
 5. Click the Alltabs icon to open the panel. Click it again, or use the panel's close button, to close it.
 
-On this PC, select:
-
-```text
-C:\Users\yzhao\Downloads\Workspace\Alltabs\extension
-```
-
-For your Mac, copy the `extension` folder or extract `dist/alltabs-0.1.0.zip` into a permanent folder and load that folder. Keep it in place while the unpacked extension is installed. There is no build step or dependency installation.
+For another computer, copy the `extension` folder or extract `dist/alltabs-0.1.0.zip` into a permanent folder and load that folder. Keep it in place while the unpacked extension is installed. There is no build step or dependency installation.
 
 Sign into the same Chrome profile on your PC, Mac, Android phone, and iPhone, with history and open-tab sync enabled. The phones do not need Alltabs installed. They supply their tabs through Chrome sync; Alltabs runs on your computers.
 
@@ -79,8 +75,8 @@ Only the contents of `extension` are packaged, with `manifest.json` at the ZIP r
 
 Real account sync across Windows, macOS, Android, and iPhone remains a personal-use acceptance check; the automated test profile is intentionally unsigned-in.
 
-## Before publishing
+## Release readiness
 
-This is version 0.1.0 for personal testing, not a published store listing. After daily-use validation, review permission disclosures, publish a privacy-policy page based on `PRIVACY.md`, choose final store screenshots and copy, and submit the ZIP for Chrome Web Store review. No analytics, server, account, or build service is required.
+See [release readiness](docs/RELEASE.md) for completed work and remaining publication steps, [store listing](docs/STORE-LISTING.md) for submission copy, and [contributing](CONTRIBUTING.md) for code standards. Run `node scripts/release.mjs` for the full quality and packaging gate. This version is a release candidate and has not been submitted to the store.
 
 References: [Sessions API](https://developer.chrome.com/docs/extensions/reference/api/sessions), [Side Panel API](https://developer.chrome.com/docs/extensions/reference/api/sidePanel), [OneTab help](https://www.one-tab.com/help).

@@ -346,6 +346,15 @@ async function initialize() {
     $('#search').value = query;
     $('#version').textContent = chrome.runtime.getManifest().version;
     await refresh();
+    chrome.storage.onChanged.addListener((changes, area) => {
+      if (area !== 'local' || !changes.preferences) return;
+      const value = changes.preferences.newValue;
+      prefs = { showLocal: true, ...value, expanded: value?.expanded || {}, hidden: value?.hidden || {} };
+      const available = new Set(filterDevices(devices, '', hiddenKeys()).flatMap(allTabs).map(tab => tab.key));
+      selected = new Set([...selected].filter(key => available.has(key)));
+      render();
+      if ($('#settings-dialog').open) showSettings();
+    });
     for (const event of [chrome.tabs.onCreated, chrome.tabs.onRemoved, chrome.tabs.onUpdated]) event.addListener(scheduleRefresh);
     setInterval(() => { if (!document.hidden) void refresh(); }, 30000);
   } catch (error) {

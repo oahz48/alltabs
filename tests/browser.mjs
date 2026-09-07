@@ -79,7 +79,19 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:380,height:820,deviceScaleFactor:1,mobile:false});
   await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-color-scheme',value:'light'}]});
   await send('Browser.grantPermissions',{origin,permissions:['clipboardReadWrite','clipboardSanitizedWrite']});
-  if (process.argv.includes('--extension')) {
+  if (process.argv.includes('--store-assets')) {
+    await mkdir('docs/store-assets', { recursive: true });
+    for (const [page, width, height, file] of [['store.html',1280,800,'screenshot.png'],['promo.html',440,280,'promo.png']]) {
+      await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
+      await send('Page.navigate',{url:`${origin}/${page}`});
+      await until(`document.readyState==='complete'`);
+      if (page==='store.html') await until(`document.querySelector('iframe')?.contentDocument.querySelectorAll('.device').length===4`);
+      const result=await send('Page.captureScreenshot',{format:'png'});
+      await writeFile(`docs/store-assets/${file}`,Buffer.from(result.data,'base64'));
+    }
+    assert.deepEqual(errors,[]);
+    console.log('Store screenshot and small promotional image generated.');
+  } else if (process.argv.includes('--extension')) {
     const { id } = await send('Extensions.loadUnpacked',{path:path.resolve('extension')});
     await send('Page.navigate',{url:`chrome-extension://${id}/panel.html`});
     await until(`document.querySelector('#summary')?.textContent.includes('remote device')`);
@@ -181,6 +193,14 @@ try {
     assert.equal(await evaluate(`document.querySelectorAll('.tab-row').length`),count);
     await evaluate(`window.demo.fail=false`);await refresh();
     assert.equal(await evaluate(`document.querySelector('#error').hidden`),true);
+  });
+  await check('preferences changed in another window update the panel and selection',async()=>{
+    await click('.tab-row input');
+    await evaluate(`window.externalKey=document.querySelector('.device').dataset.device;chrome.storage.onChanged.fire({preferences:{newValue:{hidden:{[window.externalKey]:'Other window'},expanded:{},showLocal:true}}},'local')`);
+    assert.equal(await evaluate(`document.querySelectorAll('.device').length`),3);
+    assert.equal(await evaluate(`document.querySelector('#selection-bar').hidden`),true);
+    await evaluate(`chrome.storage.onChanged.fire({preferences:{newValue:{hidden:{},expanded:{},showLocal:true}}},'local')`);
+    assert.equal(await evaluate(`document.querySelectorAll('.device').length`),4);
   });
   await check('500-tab rendering, scrolling, opening and refresh retain position',async()=>{
     await evaluate(`window.demo.large();window.demo.local.splice(0)`);

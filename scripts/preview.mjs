@@ -9,6 +9,11 @@ export function startPreview(port = 4173) {
     try {
       const url = new URL(request.url, 'http://localhost');
       let pathname = decodeURIComponent(url.pathname);
+      if (['/store.html', '/promo.html'].includes(pathname)) {
+        response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+        response.end(await readFile(path.join(root, 'tests', pathname.slice(1))));
+        return;
+      }
       if (pathname === '/_favicon/') pathname = '/icons/icon-16.png';
       const isPanel = pathname === '/' || pathname === '/panel.html';
       const filename = pathname === '/preview-api.js' ? path.join(root, 'tests/preview-api.js') : path.resolve(root, 'extension', '.' + (isPanel ? '/panel.html' : pathname));

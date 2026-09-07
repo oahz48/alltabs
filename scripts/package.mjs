@@ -1,6 +1,9 @@
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { deflateRawSync } from 'node:zlib';
+import { validateExtension } from './validate.mjs';
+
+await validateExtension();
 
 // Create a conventional ZIP using Node's built-ins so packaging works on Mac and Windows.
 function crc32(data) {

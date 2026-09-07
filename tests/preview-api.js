@@ -24,7 +24,7 @@
   const api = {
     runtime: { getURL: path => new URL(path || '/',location.origin).href, getManifest: () => ({version:'0.1.0 · Demo'}) },
     windows: { getCurrent: async () => ({id:1}) },
-    storage: { local:storage('alltabs:local:'),session:storage('alltabs:session:') },
+    storage: { local:storage('alltabs:local:'),session:storage('alltabs:session:'),onChanged:event() },
     sessions: { getDevices: async () => { if (window.demo.fail) throw new Error('Test sync error'); return structuredClone(remote); } },
     tabs: {
       query: async () => structuredClone(local),

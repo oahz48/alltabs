@@ -35,7 +35,9 @@ for (const size of [16,32,48,128]) {
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const total = [0,0,0,0];
     for (let sy = 0; sy < 4; sy++) for (let sx = 0; sx < 4; sx++) {
-      const rgba = pixel((x+(sx+.5)/4)*128/size,(y+(sy+.5)/4)*128/size);
+      // Store icons need 16px transparent padding around a 96px square mark.
+      const px = (x+(sx+.5)/4)*128/size, py = (y+(sy+.5)/4)*128/size;
+      const rgba = size === 128 ? pixel((px-16)*128/96,(py-16)*128/96) : pixel(px,py);
       for (let c=0;c<4;c++) total[c] += rgba[c];
     }
     for (let c=0;c<4;c++) raw[y*(1+size*4)+1+x*4+c]=Math.round(total[c]/16);
