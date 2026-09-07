@@ -10,3 +10,7 @@ Source: index.html and ../PRIVACY.md. Run `node scripts/privacy-page.mjs` then `
 No analytics, cookies, forms, or external browser scripts are used. Cloudflare receives normal HTTP requests when someone visits the site. The extension does not contact the site or transmit tab data to it.
 
 The homepage serves the extension icon and `assets/panel-preview.png` (actual panel with sample data). The build embeds these PNGs in the Worker and serves them locally. The Chrome Web Store label is intentionally non-clickable while review is pending. After publication, replace it with the installation link and remove the awaiting-review notice. See `../AGENTS.md` and `../docs/RELEASE.md` for release status and the assigned extension ID.
+
+## Website update — September 7, 2026
+
+Deployed the prominent six-feature section, Features navigation link, and compact System requirements footnote to the existing alltabs-site Worker. Verified the live HTTPS homepage, privacy page, icon, and panel preview match local files. Store Coming soon status remains unchanged.

@@ -10,6 +10,6 @@ Browser profiles, local agent tooling, caches, dependencies, credentials, logs, 
 
 ## Validation and release
 
-Run node scripts/release.mjs for the full validation and packaging gate. The Windows Quality workflow runs the same command on GitHub. Report vulnerabilities using SECURITY.md.
+Release validation, all eight unit/package tests, 12 browser checks, and five real-extension checks passed on September 7, 2026. Browser checks required execution outside the filesystem sandbox. Run node scripts/release.mjs for the full validation and packaging gate. The Windows Quality workflow runs the same command on GitHub. Report vulnerabilities using SECURITY.md.
 
 GitHub source publication is separate from Chrome Web Store publication. Version 0.1.0 was observed pending review on September 7, 2026. Do not claim store availability until confirmed. Create release tags and attach packages only when the exact tested release is selected.
