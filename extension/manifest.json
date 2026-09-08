@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Alltabs",
-  "version": "0.1.0",
-  "description": "Your synced Chrome tabs, one click away. Browse devices in a persistent side panel.",
+  "name": "Alltabs – Synced Tabs Side Panel",
+  "version": "0.1.1",
+  "description": "Find synced tabs from other devices in a persistent Chrome side panel. Search, open, and copy links.",
   "minimum_chrome_version": "141",
   "permissions": ["sidePanel", "sessions", "tabs", "storage", "favicon", "clipboardWrite"],
   "background": { "service_worker": "background.js" },

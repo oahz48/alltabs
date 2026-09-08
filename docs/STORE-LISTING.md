@@ -1,23 +1,23 @@
 # Chrome Web Store listing
 
-Status: prepared for owner review; not submitted.
+Status: version 0.1.0 is published. The title, summary, and detailed description below are prepared for the 0.1.1 update; not yet submitted.
 
 ## Listing fields
 
-- Name: Alltabs
-- Summary: Your synced Chrome tabs, one click away. Browse devices in a persistent side panel.
+- Name: Alltabs – Synced Tabs Side Panel
+- Summary: Find synced tabs from other devices in a persistent Chrome side panel. Search, open, and copy links.
 - Suggested category: Productivity / Tools (choose the nearest current dashboard category).
 - Language: English
 - Pricing: Free; no in-app purchases.
 
 ## Detailed description
 
-Keep your tabs from other devices within reach.
+Find your synced tabs from other devices in one persistent Chrome side panel.
+
+Alltabs brings the tabs Chrome syncs from your phones and computers into a desktop side panel. Browse by device, search tab titles and addresses, open individual tabs or a batch, and copy the links you need without losing your place.
 
 PRIVATE BY DESIGN
 Alltabs processes tab titles, URLs, searches, and selections locally on your device. It does not upload this data to the developer, the Alltabs website, or any developer-operated server. There is no Alltabs account, analytics, tracking, advertising, or remote code.
-
-Alltabs brings the tabs Chrome syncs from your phones and computers into a persistent desktop side panel. Browse by device, search titles and addresses, and open the links you need without losing your place.
 
 • Search across visible devices.
 • Open individual tabs, or select several to open together.
@@ -48,7 +48,7 @@ Privacy policy URL: https://alltabs.oahz48.com/privacy
 Publisher: z0
 Support email: oahz48@gmail.com
 Homepage / support URL: https://alltabs.oahz48.com/
-Distribution regions and visibility: pending owner selection.
+Distribution: free, public, all regions as configured for the published 0.1.0 listing.
 
 ## Reviewer instructions
 

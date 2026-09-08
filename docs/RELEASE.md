@@ -1,6 +1,6 @@
 # Release readiness — Alltabs 0.1.0
 
-This is a release candidate, not a published extension. Local preparation is complete except the manual acceptance checks below. Store approval is controlled by Google.
+Alltabs 0.1.0 is published. On September 8, 2026, the public Chrome Web Store listing was verified with an Add to Chrome button. Earlier preparation and submission records below are historical.
 
 ## Gaps closed
 
@@ -56,3 +56,13 @@ Public source is available at https://github.com/oahz48/alltabs under MIT. GitHu
 ## CI startup fix — September 7, 2026
 
 The hosted browser suite failed while waiting ten seconds for Chrome's DevToolsActivePort file, before running browser assertions. Both browser suites now use the inherited debugging pipe, with a 45-second initial handshake and explicit process-exit/launch diagnostics. All 25 checks passed locally, and GitHub run 34165826330 passed the full release command. Extension source and the submitted package contents are unchanged. The tinted homepage and pill action buttons were deployed and verified over HTTPS.
+
+## Public release — September 8, 2026
+
+Verified the public listing at https://chromewebstore.google.com/detail/alltabs/ikneolohkckpkfmkbplmcneeaaelneoa shows Alltabs 0.1.0, updated September 8, 2026, and Add to Chrome. Enabled the homepage install link and removed Coming soon and awaiting-review text. Rebuilt and syntax-checked the Worker, deployed to alltabs-site, and verified the live homepage, privacy page, icon, and panel preview match local files. Extension package unchanged.
+
+## Discoverability update prepared — September 8, 2026
+
+Prepared version 0.1.1 with the name Alltabs – Synced Tabs Side Panel and a descriptive summary. Revised docs/STORE-LISTING.md to lead with synced tabs from other devices and the side panel workflow. Runtime behavior and permissions are unchanged. Updated the installed-extension name assertion. All 25 checks and release validation passed on Windows Chrome 152.0.7977.76; generated dist/alltabs-0.1.1.zip. Browser automation was denied access to the publisher dashboard, so this update has not been uploaded or submitted. Upload the ZIP to the existing item's Package tab, paste the Detailed description section from docs/STORE-LISTING.md into Store listing, and submit for review. The published version remains 0.1.0 until the update is approved and published.
+
+Local test extraction: dist/store-test-0.1.1/. All 11 extracted files were verified against the release ZIP. Keep future test extractions under dist/store-test-<version>/ to match the existing convention.

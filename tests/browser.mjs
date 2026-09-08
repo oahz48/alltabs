@@ -96,7 +96,7 @@ try {
     await until(`document.querySelector('#summary')?.textContent.includes('remote device')`);
     await check('real unpacked extension starts without errors',async()=>{
       assert.equal(await evaluate(`document.querySelector('#error').hidden`),true);
-      assert.equal(await evaluate(`chrome.runtime.getManifest().name`),'Alltabs');
+      assert.equal(await evaluate(`chrome.runtime.getManifest().name`),'Alltabs – Synced Tabs Side Panel');
       assert.deepEqual(await evaluate(`chrome.sessions.getDevices()`),[]);
     });
     await check('real side panel uses toolbar toggle behavior',async()=>{

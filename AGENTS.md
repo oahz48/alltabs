@@ -9,14 +9,14 @@
 - Never commit credentials, private keys, local caches, browser profiles, or generated release ZIPs. Keep `dist/`, `artifacts/`, and local `.agents/` skills ignored.
 - Read `docs/RELEASE.md` and `website/README.md` before release or website work. Update these records when publishing status changes.
 
-## Current release record (2026-09-07)
+## Current release record (2026-09-08)
 
-- Alltabs 0.1.0 was submitted to the Chrome Web Store; the dashboard confirmed **Pending review**. This is a historical observation: verify the current dashboard before claiming a new status.
+- Alltabs 0.1.0 is published. On September 8, 2026, the public Chrome Web Store listing showed version 0.1.0 and **Add to Chrome**.
 - Extension ID: `ikneolohkckpkfmkbplmcneeaaelneoa`. Publisher: `z0`. Public support: `oahz48@gmail.com`.
-- Distribution is free, public, all regions. Automatic publication is **off**. After approval, manual publication is required within Google's stated 30-day staging window.
+- Distribution was configured free, public, all regions. Automatic publication was off at submission; the owner manually published version 0.1.0.
 - The user confirmed final-package tests pass on Windows and macOS, including macOS Chrome 152.0.7977.82 ARM64.
 - Homepage: https://alltabs.oahz48.com/ ; privacy: https://alltabs.oahz48.com/privacy . Hosted by Cloudflare Worker `alltabs-site`; do not change the apex domain or www as part of routine website edits.
-- The homepage intentionally has a non-clickable “Chrome Web Store · Coming soon” label and awaiting-review text. After confirmed publication, replace it with the install link: https://chromewebstore.google.com/detail/alltabs/ikneolohkckpkfmkbplmcneeaaelneoa . Do not imply it is installable before then.
+- The homepage has an active Add to Chrome link: https://chromewebstore.google.com/detail/alltabs/ikneolohkckpkfmkbplmcneeaaelneoa . Keep it aligned with confirmed publication status.
 
 ## Product and quality
 

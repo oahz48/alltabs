@@ -9,7 +9,7 @@ Source: index.html and ../PRIVACY.md. Run `node scripts/privacy-page.mjs` then `
 
 No analytics, cookies, forms, or external browser scripts are used. Cloudflare receives normal HTTP requests when someone visits the site. The extension does not contact the site or transmit tab data to it.
 
-The homepage serves the extension icon and `assets/panel-preview.png` (actual panel with sample data). The build embeds these PNGs in the Worker and serves them locally. The Chrome Web Store label is intentionally non-clickable while review is pending. After publication, replace it with the installation link and remove the awaiting-review notice. See `../AGENTS.md` and `../docs/RELEASE.md` for release status and the assigned extension ID.
+The homepage serves the extension icon and `assets/panel-preview.png` (actual panel with sample data). The build embeds these PNGs in the Worker and serves them locally. The Add to Chrome button links to the published Chrome Web Store listing. See `../AGENTS.md` and `../docs/RELEASE.md` for release status and the assigned extension ID.
 
 ## Website update — September 7, 2026
 
@@ -26,3 +26,7 @@ The homepage and privacy page now use white/zinc surfaces and charcoal text, wit
 ## Tinted surfaces and pill actions — September 7, 2026
 
 Deployed soft blue/lavender page and preview surfaces, with rounded gradient-outline action buttons based on GitOwl's closing call to action. GitHub has a hover fill and keyboard focus ring; Add to Chrome remains disabled and labelled Coming soon. Verified desktop and 390px layouts, no horizontal overflow, and matching live homepage, privacy page, and assets.
+
+## Published install link — September 8, 2026
+
+Confirmed Alltabs 0.1.0 is publicly available with Add to Chrome. Enabled the homepage install link and removed the pending-review notice and disabled-button styling. Rebuilt and syntax-checked worker.js, deployed to alltabs-site, and verified the live homepage, privacy page, and both image assets match local files.
