@@ -66,3 +66,17 @@ Verified the public listing at https://chromewebstore.google.com/detail/alltabs/
 Prepared version 0.1.1 with the name Alltabs – Synced Tabs Side Panel and a descriptive summary. Revised docs/STORE-LISTING.md to lead with synced tabs from other devices and the side panel workflow. Runtime behavior and permissions are unchanged. Updated the installed-extension name assertion. All 25 checks and release validation passed on Windows Chrome 152.0.7977.76; generated dist/alltabs-0.1.1.zip. Browser automation was denied access to the publisher dashboard, so this update has not been uploaded or submitted. Upload the ZIP to the existing item's Package tab, paste the Detailed description section from docs/STORE-LISTING.md into Store listing, and submit for review. The published version remains 0.1.0 until the update is approved and published.
 
 Local test extraction: dist/store-test-0.1.1/. All 11 extracted files were verified against the release ZIP. Keep future test extractions under dist/store-test-<version>/ to match the existing convention.
+
+## Icon update prepared — October 6, 2026
+
+The public store listing reports version 0.1.1, updated September 9, superseding the earlier status above. Prepared version 0.1.2 with the approved green four-square logo for both extension and toolbar. Runtime behavior and permissions are unchanged. Original artwork remains backed up under docs/design/toolbar-icons-2026-09-13/original/. Unused neutral toolbar assets and mark-v2.svg were moved to docs/design/archived-unused-icons/; the package contains only the 11 approved files.
+
+The full release command passed all 25 checks on Windows Chrome 154.0.8037.58, including reproducible ZIP verification, 12 browser checks and 5 real-extension checks. The initial sandboxed run failed during Chrome startup; running the same checks outside the sandbox passed. Upload package: dist/alltabs-0.1.2.zip.
+
+Submission remains pending: the browser tool rejected access to https://chrome.google.com/webstore/devconsole with "Not allowed." The user must upload the ZIP to the existing Alltabs item's Package tab and submit for review. Preserve existing distribution and manual-publication settings. No store changes or website deployment were performed.
+
+## Listing artwork and website refresh — October 6, 2026
+
+The user reports uploading the 0.1.2 package; submission status has not been verified. Refreshed docs/store-assets/icon-128.png, promo.png, and screenshot.png with the approved green logo. The promo uses a pale background to preserve contrast. Store artwork upload remains a manual dashboard step.
+
+Deployed the homepage logo/favicon and updated sample panel preview to the existing alltabs-site Worker, active version 891363a0. Verified homepage, privacy page, and both image assets byte-for-byte against local files. No domain changes. See website/README.md and docs/store-assets/README.md.

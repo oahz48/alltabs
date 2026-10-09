@@ -25,3 +25,7 @@
 - Run appropriate validation for changes. `npm run check` runs package validation, unit/package tests, browser tests, and real-extension tests. `npm run release` performs checks and creates the release package. Do not change an already-submitted version's package without planning a new store upload/version.
 - Website build: `node scripts/privacy-page.mjs` then `node scripts/build-website.mjs`. Check generated `website/worker.js` syntax and verify live pages/assets after an authorized deployment.
 - Ask before installing non-Python dependencies or tools. Follow the user's global AGENTS instructions for Python environments.
+
+## Release status update (2026-10-06)
+
+The public Chrome Web Store listing checked October 6 reports 0.1.1, updated September 9, superseding the older release record above. Version 0.1.2 with the approved green logo and toolbar icon is packaged in dist/alltabs-0.1.2.zip and all 25 release checks pass. The user confirmed uploading the package and updated artwork; submission/publication have not been verified because the browser tool denied dashboard access. The website's green-logo update is deployed and verified. See docs/RELEASE.md.

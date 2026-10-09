@@ -22,14 +22,15 @@ function rounded(x, y, left, top, width, height, radius) {
   return x >= left && x <= left + width && y >= top && y <= top + height && dx * dx + dy * dy <= radius * radius;
 }
 function pixel(x, y) {
-  if (!rounded(x,y,2,2,124,124,30)) return [0,0,0,0];
-  let color = [27,68,58,255];
-  if (rounded(x,y,49,25,51,63,12)) color = [105,196,165,255];
-  if (rounded(x,y,28,42,53,63,12)) color = [239,250,243,255];
-  if (rounded(x,y,37,51,35,45,5)) color = [27,68,58,255];
-  return color;
+  for (const [left, top] of [[8,8], [72,8], [8,72], [72,72]]) {
+    if (rounded(x,y,left,top,48,48,12)) {
+      return left === 72 && top === 72 ? [105,196,165,255] : [27,68,58,255];
+    }
+  }
+  return [0,0,0,0];
 }
-mkdirSync('extension/icons', { recursive: true });
+const outputDir = process.argv[2] || 'extension/icons';
+mkdirSync(outputDir, { recursive: true });
 for (const size of [16,32,48,128]) {
   const raw = Buffer.alloc(size * (1 + size * 4));
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
@@ -40,10 +41,12 @@ for (const size of [16,32,48,128]) {
       const rgba = size === 128 ? pixel((px-16)*128/96,(py-16)*128/96) : pixel(px,py);
       for (let c=0;c<4;c++) total[c] += rgba[c];
     }
-    for (let c=0;c<4;c++) raw[y*(1+size*4)+1+x*4+c]=Math.round(total[c]/16);
+    // PNG stores straight alpha: preserve edge color while averaging coverage.
+    for (let c=0;c<3;c++) raw[y*(1+size*4)+1+x*4+c]=total[3] ? Math.round(total[c]*255/total[3]) : 0;
+    raw[y*(1+size*4)+1+x*4+3]=Math.round(total[3]/16);
   }
   const ihdr=Buffer.alloc(13); ihdr.writeUInt32BE(size); ihdr.writeUInt32BE(size,4); ihdr[8]=8; ihdr[9]=6;
-  writeFileSync(`extension/icons/icon-${size}.png`,Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',ihdr),chunk('IDAT',deflateSync(raw)),chunk('IEND',Buffer.alloc(0))]));
+  writeFileSync(`${outputDir}/icon-${size}.png`,Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',ihdr),chunk('IDAT',deflateSync(raw)),chunk('IEND',Buffer.alloc(0))]));
 }
-writeFileSync('extension/icons/mark.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect x="2" y="2" width="124" height="124" rx="30" fill="#1b443a"/><rect x="49" y="25" width="51" height="63" rx="12" fill="#69c4a5"/><rect x="28" y="42" width="53" height="63" rx="12" fill="#effaf3"/><rect x="37" y="51" width="35" height="45" rx="5" fill="#1b443a"/></svg>');
+writeFileSync(`${outputDir}/mark.svg`, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><g fill="#1b443a"><rect x="8" y="8" width="48" height="48" rx="12"/><rect x="72" y="8" width="48" height="48" rx="12"/><rect x="8" y="72" width="48" height="48" rx="12"/></g><rect x="72" y="72" width="48" height="48" rx="12" fill="#69c4a5"/></svg>');
 console.log('Generated icons at 16, 32, 48, and 128 px.');

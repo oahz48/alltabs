@@ -30,3 +30,13 @@ Deployed soft blue/lavender page and preview surfaces, with rounded gradient-out
 ## Published install link — September 8, 2026
 
 Confirmed Alltabs 0.1.0 is publicly available with Add to Chrome. Enabled the homepage install link and removed the pending-review notice and disabled-button styling. Rebuilt and syntax-checked worker.js, deployed to alltabs-site, and verified the live homepage, privacy page, and both image assets match local files.
+
+## Store status — October 6, 2026
+
+The public store listing reports version 0.1.1, updated September 9. The green-icon update 0.1.2 is packaged locally but not submitted because automated dashboard access was denied. The existing install link remains valid. No website rebuild or deployment was performed; the deployed website still uses its previous icon.
+
+## Green logo deployed — October 6, 2026
+
+Deployed the rebuilt website to the existing alltabs-site Worker using Cloudflare Quick Edit; active version 891363a0. The homepage logo, favicon, and sample panel preview now use the approved green four-square mark. Verified the public homepage, privacy page, icon PNG, and panel-preview PNG byte-for-byte against the local build. Saved a live screenshot at artifacts/website-green-logo-live.png. Domain and distribution links are unchanged.
+
+Regenerated store artwork is in docs/store-assets/: icon-128.png, promo.png (440 x 280), and screenshot.png (1280 x 800). Previous artwork is backed up in docs/design/store-artwork-before-green/.

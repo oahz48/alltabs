@@ -25,10 +25,12 @@ export async function validateExtension() {
   assert.equal(manifest.side_panel.default_path, 'panel.html');
   assert.equal(manifest.content_security_policy.extension_pages, "script-src 'self'; object-src 'none'; base-uri 'none'; connect-src 'none'");
   for (const size of [16,32,48,128]) {
-    const data = await readFile(`extension/icons/icon-${size}.png`);
-    assert.equal(data.subarray(0,8).toString('hex'), '89504e470d0a1a0a');
-    assert.equal(data.readUInt32BE(16), size);
-    assert.equal(data.readUInt32BE(20), size);
+    for (const iconPath of [manifest.icons[size], manifest.action.default_icon[size]]) {
+      const data = await readFile(`extension/${iconPath}`);
+      assert.equal(data.subarray(0,8).toString('hex'), '89504e470d0a1a0a');
+      assert.equal(data.readUInt32BE(16), size);
+      assert.equal(data.readUInt32BE(20), size);
+    }
   }
   for (const dir of ['extension', 'scripts', 'tests']) {
     for (const file of await walk(dir)) {

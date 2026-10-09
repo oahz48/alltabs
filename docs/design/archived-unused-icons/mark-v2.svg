@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Alltabs icon concept</title>
+  <desc id="desc">Three playful overlapping browser tabs on a dark rounded square.</desc>
+  <rect x="2" y="2" width="124" height="124" rx="31" fill="#18181b"/>
+
+  <path d="M51 25h37c8.84 0 16 7.16 16 16v30c0 8.84-7.16 16-16 16H51c-8.84 0-16-7.16-16-16V41c0-8.84 7.16-16 16-16Z" fill="#a78bfa"/>
+  <path d="M42 39h37c8.84 0 16 7.16 16 16v30c0 8.84-7.16 16-16 16H42c-8.84 0-16-7.16-16-16V55c0-8.84 7.16-16 16-16Z" fill="#2563eb"/>
+  <path d="M34 54h37c8.84 0 16 7.16 16 16v25c0 8.84-7.16 16-16 16H34c-8.84 0-16-7.16-16-16V70c0-8.84 7.16-16 16-16Z" fill="#f8fafc"/>
+
+  <circle cx="45" cy="69" r="4" fill="#2563eb"/>
+  <path d="M56 69h18" stroke="#cbd5e1" stroke-width="5" stroke-linecap="round"/>
+</svg>

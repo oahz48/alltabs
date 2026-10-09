@@ -2,9 +2,9 @@
 
 ## Installation on Windows or macOS
 
-1. Use the contents extracted from dist/alltabs-0.1.0.zip. On this PC they are ready in dist/store-test-0.1.0.
+1. Extract dist/alltabs-0.1.2.zip into dist/store-test-0.1.2 before testing this release.
 2. Open chrome://extensions. Disable the existing development Alltabs temporarily to avoid two identical toolbar icons. This keeps its data available.
-3. Enable Developer mode, choose Load unpacked, and select the extracted store-test-0.1.0 folder containing manifest.json.
+3. Enable Developer mode, choose Load unpacked, and select the extracted store-test-0.1.2 folder containing manifest.json.
 4. Pin the new Alltabs toolbar action. Leave the folder in place while testing.
 
 The ZIP is a store upload artifact. Extract it for local testing. You do not need Chrome's Pack extension button or a separate CRX file.
